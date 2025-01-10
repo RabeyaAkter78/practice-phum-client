@@ -1,36 +1,41 @@
 import React, { Children, createElement } from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+
+import { ConfigProvider, Layout, Menu } from 'antd';
+import { Outlet } from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
 const items = [
     {
-        key: '1',
-        lebel: 'Home'
+        key: 'Home',
+        label: 'Home'
     },
     {
-        key: '2',
-        lebel: 'About'
+        key: 'About',
+        label: 'About'
     },
     {
-        key: '3',
-        lebel: 'Profile',
+        key: 'Profile',
+        label: 'Profile',
         Children: [
             {
-                key: '1',
-                lebel: 'Create Admin'
+                key: 'Create Admin',
+                label: 'Create Admin'
             },
             {
-                key: '2',
-                lebel: 'Create Student'
+                key: 'Create Faculty',
+                label: 'Create Faculty'
+            },
+            {
+                key: 'Create Student',
+                label: 'Create Student'
             },
         ]
     }
 ]
 
-const App: React.FC = () => {
-
+const MainLayout = () => {
 
     return (
+
         <Layout style={{ height: '100vh' }} >
             <Sider
                 breakpoint="lg"
@@ -41,28 +46,33 @@ const App: React.FC = () => {
                 onCollapse={(collapsed, type) => {
                     console.log(collapsed, type);
                 }}
+
             >
-                <div className="demo-logo-vertical" />
+                <div style={{ color: 'white', textAlign: 'center', display: 'flex', alignItems: 'center', height: '4rem', justifyContent: 'center' }} >Ph Uni</div>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
             </Sider>
             <Layout>
-                <Header style={{ padding: 0 }} />
-                <Content style={{ margin: '24px 16px 0' }}>
+                <Header style={{ padding: 0, }} />
+                <Content style={{ margin: '24px 16px 0', }}>
                     <div
                         style={{
                             padding: 24,
                             minHeight: 360,
+
                         }}
                     >
-                        content
+                        <Outlet />
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>
+                <Footer style={{ textAlign: 'center', color: "black" }}>
                     Ant Design ©{new Date().getFullYear()} Created by Ant UED
                 </Footer>
             </Layout>
         </Layout>
+
     );
 };
 
-export default App;
+export default MainLayout;
+
+
