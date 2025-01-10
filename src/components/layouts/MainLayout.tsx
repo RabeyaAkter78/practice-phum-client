@@ -1,38 +1,36 @@
 import React, { Children, createElement } from 'react';
 
-import { ConfigProvider, Layout, Menu } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { ConfigProvider, Layout, Menu, MenuProps } from 'antd';
+import { NavLink, Outlet } from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
-const items = [
-    {
-        key: 'Home',
-        label: 'Home'
-    },
-    {
-        key: 'About',
-        label: 'About'
-    },
-    {
-        key: 'Profile',
-        label: 'Profile',
-        Children: [
-            {
-                key: 'Create Admin',
-                label: 'Create Admin'
-            },
-            {
-                key: 'Create Faculty',
-                label: 'Create Faculty'
-            },
-            {
-                key: 'Create Student',
-                label: 'Create Student'
-            },
-        ]
-    }
-]
 
 const MainLayout = () => {
+    const items = [
+        {
+            key: 'Dashboard',
+      
+            label: <NavLink to="/admin/dashboard">Dashboard</NavLink>
+        },
+
+        {
+            key: 'User Management',
+            label: 'User Management',
+            children: [
+                {
+                    key: 'Create Admin',
+                    label: <NavLink to='/admin/create-admin'>Create Admin</NavLink>
+                },
+                {
+                    key: 'Create Faculty',
+                    label: <NavLink to='/admin/create-faculty'>Create Faculty</NavLink>
+                },
+                {
+                    key: 'Create Student',
+                    label: <NavLink to='/admin/create-student'>Create Student</NavLink>
+                },
+            ]
+        }
+    ]
 
     return (
 
@@ -48,8 +46,22 @@ const MainLayout = () => {
                 }}
 
             >
-                <div style={{ color: 'white', textAlign: 'center', display: 'flex', alignItems: 'center', height: '4rem', justifyContent: 'center' }} >Ph Uni</div>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+                <div
+                    style={{
+                        color: 'white',
+                        textAlign: 'center',
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: '4rem',
+                        justifyContent: 'center'
+                    }} >
+                    Ph Uni
+                </div>
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={['Dashboard']}
+                    items={items} />
             </Sider>
             <Layout>
                 <Header style={{ padding: 0, }} />
