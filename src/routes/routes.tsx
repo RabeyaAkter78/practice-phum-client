@@ -3,7 +3,7 @@ import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import React from 'react';
-import adminPaths from "./admin.route";
+import { adminRoutes } from "./admin.route";
 
 
 const router = createBrowserRouter([
@@ -15,17 +15,17 @@ const router = createBrowserRouter([
     {
         path: "/admin",
         element: <App />,
-        children: adminPaths
+        children: adminRoutes
     },
     {
         path: "/faculty",
         element: <App />,
-        children: adminPaths
+        children: adminRoutes
     },
     {
         path: "/student",
         element: <App />,
-        children: adminPaths
+        children: adminRoutes
     },
     {
         path: '/login',
