@@ -1,43 +1,16 @@
 import React from 'react';
 
 import { Layout, Menu } from 'antd';
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { adminSidebarItems } from '../../routes/admin.route';
+import { Outlet } from 'react-router-dom';
+import { adminPaths } from '../../routes/admin.route';
+import { sidebarItemsGenerator } from '../../utils/sidebarItemsGenerator';
+import Sidebar from './sidebar';
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = () => {
-
     return (
-
         <Layout style={{ height: '100vh' }} >
-            <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={(broken) => {
-                    console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                    console.log(collapsed, type);
-                }}
-
-            >
-                <div
-                    style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: '4rem',
-                        justifyContent: 'center'
-                    }} >
-                    Ph Uni
-                </div>
-                <Menu
-                    theme="dark"
-                    mode="inline"
-                    defaultSelectedKeys={['Dashboard']}
-                    items={adminSidebarItems} />
-            </Sider>
+            <Sidebar />
             <Layout>
                 <Header style={{ padding: 0, }} />
                 <Content style={{ margin: '24px 16px 0', }}>
@@ -51,9 +24,7 @@ const MainLayout = () => {
                         <Outlet />
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center', color: "black" }}>
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
-                </Footer>
+
             </Layout>
         </Layout>
 
