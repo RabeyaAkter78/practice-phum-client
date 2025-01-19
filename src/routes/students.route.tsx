@@ -12,7 +12,7 @@ export const studentPaths = [
         element: <AdminDashboard></AdminDashboard>
     },
     {
-        nmae: "User Management",
+        name: "User Management",
         children: [
             {
                 name: "Create Admin",
